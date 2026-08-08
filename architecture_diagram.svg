@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 920" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#1e40af"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#115e59"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b45309"/>
+      <stop offset="1" stop-color="#92400e"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .ttl{font-size:26px;font-weight:700;fill:#0f172a}
+      .sub{font-size:14px;fill:#475569}
+      .lyr{font-size:13px;font-weight:700;fill:#ffffff;letter-spacing:.5px}
+      .bx{rx:8;ry:8}
+      .lbl{font-size:12px;fill:#0f172a;font-weight:600}
+      .lbg{fill:#f8fafc;stroke:#cbd5e1}
+      .cc{fill:#fff7ed;stroke:#fdba74}
+      .ccT{font-size:13px;font-weight:700;fill:#9a3412}
+      .ccI{font-size:11px;fill:#7c2d12}
+    </style>
+  </defs>
+
+  <rect width="1280" height="920" fill="#ffffff"/>
+  <text x="40" y="48" class="ttl">Credit Scoring System — Production ML Architecture</text>
+  <text x="40" y="72" class="sub">Layered, modular, reproducible · Phase-1 design overview</text>
+
+  <!-- LEFT: core pipeline -->
+  <g>
+    <!-- 1 Data sources -->
+    <rect class="bx" x="40" y="110" width="780" height="56" fill="url(#g1)"/>
+    <text x="60" y="135" class="lyr">01 · DATA SOURCES</text>
+    <text x="60" y="155" class="sub" fill="#dbeafe">Raw: demographics · income · credit history · loan terms · behavioral/transactional</text>
+
+    <line x1="430" y1="166" x2="430" y2="186" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 2 Ingestion -->
+    <rect class="bx" x="40" y="186" width="780" height="56" fill="url(#g1)"/>
+    <text x="60" y="211" class="lyr">02 · INGESTION &amp; VALIDATION</text>
+    <text x="60" y="231" class="sub" fill="#dbeafe">Schema checks · Data Quality Report · point-in-time snapshot (leakage-safe)</text>
+
+    <line x1="430" y1="242" x2="430" y2="262" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 3 Preprocessing -->
+    <rect class="bx" x="40" y="262" width="380" height="56" fill="url(#g2)"/>
+    <text x="60" y="287" class="lyr">03 · PREPROCESSING</text>
+    <text x="60" y="307" class="sub" fill="#ccfbf1">Missing · outliers · encoding · scaling</text>
+
+    <rect class="bx" x="440" y="262" width="380" height="56" fill="url(#g2)"/>
+    <text x="460" y="287" class="lyr">04 · FEATURE ENGINEERING</text>
+    <text x="460" y="307" class="sub" fill="#ccfbf1">DTI · utilization · savings ratio · risk index</text>
+
+    <line x1="430" y1="318" x2="430" y2="338" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 5 Split -->
+    <rect class="bx" x="40" y="338" width="780" height="56" fill="url(#g2)"/>
+    <text x="60" y="363" class="lyr">05 · LEAKAGE-SAFE SPLIT</text>
+    <text x="60" y="383" class="sub" fill="#ccfbf1">Stratified Train/Val/Test · seed-pinned · group-aware · CV</text>
+
+    <line x1="430" y1="394" x2="430" y2="414" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 6 Modeling -->
+    <rect class="bx" x="40" y="414" width="780" height="70" fill="url(#g3)"/>
+    <text x="60" y="440" class="lyr">06 · MODEL BUILDING (compare &amp; shortlist)</text>
+    <text x="60" y="462" class="sub" fill="#ffedd5">LogReg · DecisionTree · RandomForest · GBM · XGBoost · LightGBM · CatBoost · SVM · KNN · NaiveBayes</text>
+    <text x="60" y="478" class="sub" fill="#ffedd5">Training time · interpretability · business suitability</text>
+
+    <line x1="430" y1="484" x2="430" y2="504" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 7 Evaluation -->
+    <rect class="bx" x="40" y="504" width="380" height="70" fill="url(#g3)"/>
+    <text x="60" y="529" class="lyr">07 · EVALUATION</text>
+    <text x="60" y="550" class="sub" fill="#ffedd5">AUC · KS · Gini · PR · ROC</text>
+    <text x="60" y="566" class="sub" fill="#ffedd5">Calibration · Cost · threshold</text>
+
+    <rect class="bx" x="440" y="504" width="380" height="70" fill="url(#g3)"/>
+    <text x="460" y="529" class="lyr">08 · TUNING</text>
+    <text x="460" y="550" class="sub" fill="#ffedd5">Random/Grid Search · CV</text>
+    <text x="460" y="566" class="sub" fill="#ffedd5">Early stopping · before/after</text>
+
+    <line x1="430" y1="574" x2="430" y2="594" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 9 Explain -->
+    <rect class="bx" x="40" y="594" width="780" height="56" fill="url(#g3)"/>
+    <text x="60" y="619" class="lyr">09 · EXPLAINABILITY</text>
+    <text x="60" y="639" class="sub" fill="#ffedd5">SHAP · LIME · Permutation importance · PDP · reason codes</text>
+
+    <line x1="430" y1="650" x2="430" y2="670" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 10 Registry -->
+    <rect class="bx" x="40" y="670" width="780" height="56" fill="url(#g1)"/>
+    <text x="60" y="695" class="lyr">10 · MODEL REGISTRY / SERIALIZATION</text>
+    <text x="60" y="715" class="sub" fill="#dbeafe">joblib · versioning · bundled preprocessing pipeline</text>
+
+    <line x1="430" y1="726" x2="430" y2="746" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 11 Inference -->
+    <rect class="bx" x="40" y="746" width="780" height="56" fill="url(#g1)"/>
+    <text x="60" y="771" class="lyr">11 · INFERENCE PIPELINE / SERVING</text>
+    <text x="60" y="791" class="sub" fill="#dbeafe">Input validation · preprocessing · predict · logging · structured response</text>
+
+    <line x1="430" y1="802" x2="430" y2="822" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+    <!-- 12 Monitoring -->
+    <rect class="bx" x="40" y="822" width="780" height="56" fill="url(#g2)"/>
+    <text x="60" y="847" class="lyr">12 · MONITORING &amp; RETRAINING</text>
+    <text x="60" y="867" class="sub" fill="#ccfbf1">PSI drift · fairness drift · performance decay → scheduled retrain</text>
+  </g>
+
+  <!-- RIGHT: cross-cutting -->
+  <g>
+    <rect class="cc" class="bx" x="860" y="110" width="380" height="768" rx="10" ry="10"/>
+    <text x="880" y="142" class="ccT">CROSS-CUTTING CONCERNS</text>
+    <line x1="880" y1="154" x2="1220" y2="154" stroke="#fdba74" stroke-width="1.5"/>
+
+    <rect class="lbg" class="bx" x="880" y="170" width="340" height="64"/>
+    <text x="896" y="192" class="lbl">⚙️ Config (YAML)</text>
+    <text x="896" y="212" class="sub">Single source of truth: paths, seeds,</text>
+    <text x="896" y="227" class="sub">hyperparams, thresholds — version-controlled</text>
+
+    <rect class="lbg" class="bx" x="880" y="246" width="340" height="64"/>
+    <text x="896" y="268" class="lbl">📝 Logging</text>
+    <text x="896" y="288" class="sub">Structured logs → logs/ for audit,</text>
+    <text x="896" y="303" class="sub">debugging, and reproducibility</text>
+
+    <rect class="lbg" class="bx" x="880" y="322" width="340" height="64"/>
+    <text x="896" y="344" class="lbl">🧪 Tests (pytest)</text>
+    <text x="896" y="364" class="sub">Unit · edge cases · invalid input ·</text>
+    <text x="896" y="379" class="sub">data &amp; model contracts</text>
+
+    <rect class="lbg" class="bx" x="880" y="398" width="340" height="64"/>
+    <text x="896" y="420" class="lbl">🔁 CI/CD</text>
+    <text x="896" y="440" class="sub">Lint (PEP8/ruff) → test → build →</text>
+    <text x="896" y="455" class="sub">package on every commit</text>
+
+    <rect class="lbg" class="bx" x="880" y="474" width="340" height="64"/>
+    <text x="896" y="496" class="lbl">📦 Artifacts</text>
+    <text x="896" y="516" class="sub">Trained model (.pkl), preprocessor,</text>
+    <text x="896" y="531" class="sub">encoders — versioned &amp; reproducible</text>
+
+    <rect class="lbg" class="bx" x="880" y="550" width="340" height="64"/>
+    <text x="896" y="572" class="lbl">📊 Reports / Figures</text>
+    <text x="896" y="592" class="sub">Evaluation report, confusion matrix,</text>
+    <text x="896" y="607" class="sub">ROC, SHAP, business &amp; technical reports</text>
+
+    <rect class="lbg" class="bx" x="880" y="626" width="340" height="64"/>
+    <text x="896" y="648" class="lbl">⚖️ Fairness &amp; Ethics</text>
+    <text x="896" y="668" class="sub">AIR, equal-opportunity diff, proxy</text>
+    <text x="896" y="683" class="sub">checks, Model Card</text>
+
+    <rect class="lbg" class="bx" x="880" y="702" width="340" height="64"/>
+    <text x="896" y="724" class="lbl">🔒 Privacy / Security</text>
+    <text x="896" y="744" class="sub">PII minimization, no raw PII in</text>
+    <text x="896" y="759" class="sub">artifacts/reports, .env for secrets</text>
+
+    <rect class="lbg" class="bx" x="880" y="778" width="340" height="64"/>
+    <text x="896" y="800" class="lbl">📚 Notebooks</text>
+    <text x="896" y="820" class="sub">EDA/exploration only — all logic lives</text>
+    <text x="896" y="835" class="sub">in reusable src/ modules</text>
+  </g>
+
+  <text x="40" y="905" class="sub">Single-direction pipeline (left) decoupled from cross-cutting services (right). Each box maps to a project module/folder.</text>
+</svg>

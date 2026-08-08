@@ -1,0 +1,11 @@
+model,cv_auc_mean,cv_auc_std,val_auc,cv_time_s,status
+Logistic Regression,0.9466,0.0075,0.9426,0.68,ok
+Gradient Boosting,0.9416,0.0094,0.9336,20.85,ok
+Random Forest,0.9404,0.0093,0.9326,6.73,ok
+XGBoost,0.9382,0.0105,0.9278,1.71,ok
+CatBoost,0.9367,0.0085,0.927,4.44,ok
+LightGBM,0.9348,0.011,0.9229,2.25,ok
+SVM,0.9331,0.0073,0.9329,2.95,ok
+Naive Bayes,0.9296,0.0129,0.9291,0.61,ok
+KNN,0.9232,0.0126,0.9305,0.91,ok
+Decision Tree,0.8442,0.024,0.8423,0.9,ok

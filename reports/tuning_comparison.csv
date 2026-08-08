@@ -1,0 +1,5 @@
+model,stage,roc_auc,ks,brier,opt_threshold,cost_per_applicant,best_cv_auc
+Logistic Regression,default,0.9426,0.7314,0.0904,0.64,0.2319,
+Logistic Regression,tuned,0.9425,0.731,0.0907,0.64,0.23,0.9467
+XGBoost,default,0.9183,0.6731,0.0853,0.75,0.2819,
+XGBoost,tuned,0.9354,0.7168,0.0905,0.56,0.2419,0.9436

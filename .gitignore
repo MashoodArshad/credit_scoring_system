@@ -1,0 +1,57 @@
+# ===================== Python =====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+
+# ===================== Jupyter ====================
+.ipynb_checkpoints/
+
+# ===================== Data (large/raw) ===========
+# Keep the folders (via .gitkeep), ignore the contents.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/external/*
+!data/external/.gitkeep
+
+# ===================== Models / Artifacts =========
+models/*
+!models/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+
+# ===================== Generated reports ==========
+reports/figures/*
+!reports/figures/.gitkeep
+
+# ===================== Logs =======================
+logs/*
+!logs/.gitkeep
+
+# ===================== Secrets ====================
+.env
+.env.*
+*.pem
+*.key
+*.secret
+
+# ===================== ML runtime artifacts ========
+catboost_info/
+*.log
+
+# ===================== OS / Editors ===============
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

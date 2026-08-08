@@ -1,0 +1,18 @@
+# ============================================================
+# Development-only dependencies (testing, linting, notebooks)
+# Install:  pip install -r requirements-dev.txt   (pulls core deps too)
+# ============================================================
+-r requirements.txt
+
+# --- Testing ---
+pytest>=7.4.0              # Unit/integration test framework
+pytest-cov>=4.1.0          # Coverage reporting for the src/ package
+
+# --- Code quality ---
+ruff>=0.1.0                # Ultra-fast linter + formatter (replaces flake8/black/isort)
+mypy>=1.5.0                # Static type checking for type-hinted code
+
+# --- Notebooks ---
+jupyterlab>=4.0.0          # Notebook environment for EDA & reporting
+ipykernel>=6.25.0          # Kernel linking Jupyter to this project's env
+nbstripout>=0.6.0          # Strip notebook outputs before commit (clean diffs)

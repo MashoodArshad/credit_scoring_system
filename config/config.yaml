@@ -1,0 +1,43 @@
+# ============================================================
+# Credit Scoring System — Central Configuration
+# Single source of truth: paths, seeds, splits, target, params.
+# No path/seed/hyperparameter should be hard-coded in src code.
+# ============================================================
+
+project:
+  name: "Credit Scoring System"
+  version: "0.1.0"
+  random_seed: 42              # global seed for reproducibility
+
+paths:
+  raw_data: "data/raw/credit_data.csv"
+  processed_data: "data/processed/credit_data_processed.csv"
+  models_dir: "models"
+  artifacts_dir: "artifacts"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+  logs_dir: "logs"
+
+dataset:
+  n_samples: 10000             # synthetic dataset size (Phase 3)
+  target: "creditworthy"       # 1 = creditworthy (good), 0 = defaulter
+  positive_class_value: 1      # class treated as "positive/good"
+  default_rate: 0.18           # minority-class prevalence (~realistic)
+
+split:
+  test_size: 0.20              # hold-out test fraction
+  validation_size: 0.20        # validation fraction (of the remaining train)
+  stratify: true               # preserve class proportions in each split
+  random_state: 42
+
+protected_attributes:          # EXCLUDED from training; used ONLY for fairness audit
+  - gender
+  - marital_status
+
+modeling:
+  scoring: "roc_auc"           # primary metric for model selection
+  cv_folds: 5                  # stratified k-fold cross-validation
+  n_jobs: -1                   # use all CPU cores
+
+logging:
+  level: "INFO"
